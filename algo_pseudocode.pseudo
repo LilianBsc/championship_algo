@@ -1,0 +1,16 @@
+function KMP-Prefix(pattern) {
+    set lenght = lenght(pattern)
+    set Prefix = [0 for _ in pattern]
+    Prefix[1] = 0
+    set a = 0
+    for (b=2, b =< lenght, b++) {
+        while (a>0 & pattern[a+1] != pattern[b]) {
+            set a = Prefix[a]
+        }
+        if (pattern[a+1] == pattern[b]) {
+            a++
+        }
+        Prefix[b] = a
+    }
+    return Prefix
+}
